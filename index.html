@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motiv8 Apparel</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #fff;
+            transition: background 0.3s, color 0.3s;
+        }
+        .navbar {
+            background: #f4f4f4 !important;
+            color: #181818 !important;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .navbar .logo img.motiv8-logo {
+            background: #fff;
+            border-radius: 50%;
+            padding: 2px;
+            height: 48px;
+            width: 48px;
+            object-fit: cover;
+            border: 2px solid #181818;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        }
+        .navbar .logo span {
+            color: #181818 !important;
+        }
+        .navbar nav a {
+            color: #181818 !important;
+        }
+        .navbar nav a.active {
+            color: #ffb347 !important;
+            border-bottom: 2px solid #ffb347;
+        }
+        .hamburger span {
+            background: #181818 !important;
+        }
+        .mode-switch {
+            margin-left: 2rem;
+            background: #181818;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 0.4rem 1.2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .mode-switch.light {
+            background: #fff;
+            color: #181818;
+            border: 1px solid #181818;
+        }
+        body.dark-mode {
+            background: #181818;
+            color: #fff;
+        }
+        body.dark-mode .navbar {
+            background: #232323 !important;
+            color: #fff !important;
+        }
+        body.dark-mode .navbar .logo span,
+        body.dark-mode .navbar nav a {
+            color: #fff !important;
+        }
+        body.dark-mode .navbar nav a.active {
+            color: #ffb347 !important;
+            border-bottom: 2px solid #ffb347;
+        }
+        body.dark-mode .hamburger span {
+            background: #fff !important;
+        }
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode h3,
+        body.dark-mode h4,
+        body.dark-mode h5,
+        body.dark-mode h6,
+        body.dark-mode p,
+        body.dark-mode .quote,
+        body.dark-mode .author,
+        body.dark-mode li,
+        body.dark-mode label,
+        body.dark-mode input,
+        body.dark-mode textarea,
+        body.dark-mode .cart-total,
+        body.dark-mode .cart-summary,
+        body.dark-mode .cart-item-name,
+        body.dark-mode .cart-item-price,
+        body.dark-mode .cart-item-qty span {
+            color: #fff !important;
+        }
+        body.dark-mode input,
+        body.dark-mode textarea {
+            background: #232323;
+            border-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="https://images.pexels.com/photos/532220/pexels-photo-532220.jpeg?auto=compress&w=80&q=80" alt="Motiv8 Logo" class="motiv8-logo">
+            <span>Motiv8 Apparel</span>
+        </div>
+        <button class="mode-switch" id="modeSwitch" title="Toggle light/dark mode">Dark Mode</button>
+        <nav id="navLinks">
+            <a href="index.html" class="active">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+        <div class="hamburger" id="hamburgerBtn" aria-label="Open navigation" tabindex="0">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    <section class="hero">
+    <img src="https://images.unsplash.com/photo-1517960413843-0aee8e2d471c?auto=format&fit=crop&w=800&q=80" alt="Motivational Workout Wear">
+    <div class="quote">"Push yourself, because no one else is going to do it for you."</div>
+    <div class="author">- Motiv8 Apparel</div>
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Active Lifestyle" class="active-lifestyle">
+    <div class="quote">"The pain you feel today will be the strength you feel tomorrow."</div>
+    <div class="author">- Motiv8 Apparel</div>
+    </section>
+    <script src="scripts.js"></script>
+    <script>
+    // Light/Dark mode toggle
+    const modeSwitch = document.getElementById('modeSwitch');
+    function setMode(dark) {
+        if (dark) {
+            document.body.classList.add('dark-mode');
+            modeSwitch.textContent = 'Light Mode';
+            modeSwitch.classList.remove('light');
+        } else {
+            document.body.classList.remove('dark-mode');
+            modeSwitch.textContent = 'Dark Mode';
+            modeSwitch.classList.add('light');
+        }
+    }
+    // Load mode from localStorage
+    const darkPref = localStorage.getItem('motiv8_dark_mode') === 'true';
+    setMode(darkPref);
+    modeSwitch.addEventListener('click', function() {
+        const isDark = !document.body.classList.contains('dark-mode');
+        setMode(isDark);
+        localStorage.setItem('motiv8_dark_mode', isDark);
+    });
+    </script>
+</body>
+</html>
